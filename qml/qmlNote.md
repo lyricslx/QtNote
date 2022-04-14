@@ -1,4 +1,50 @@
 # qml
+
+QML是一个描述性语言，描述每个部件的外观和行为，
+这些部件最后组合成一个完整的用户界面
+
+部件与部件之间具有层级关系，子部件会继承父部件的相关属性
+
+## qml语法
+qml的语法很简单
+```c++
+// RectangleExample.qml
+
+import QtQuick 2.5
+
+Rectangle {
+  // name this element root
+  id: root
+  
+  // properties: <name> : <value>
+  widht: 120; height: 240
+  
+  // color property
+  color: "#4A4A4A"
+  
+  // Declare a nested element (child of root)
+  Image {
+    id: triangle
+    
+    x: (parent.width - width)/2; y: 40
+    source: 'assets/triangle_rected.png'
+  }
+  
+  // Another child of root
+  Text {
+    // un-named element
+    
+    // reference element by id
+    y: triangle.y + triangle.height + 20
+    width: root.width
+    
+    color: 'white'
+    horizontalAlignment: Text.AlignHCenter
+    text: 'Triangle'
+  }
+}
+```
+
 ## qml可以非常方便的和c++交互,写法类似于css
 
 每一个窗口都有一个实例化的C++的类
